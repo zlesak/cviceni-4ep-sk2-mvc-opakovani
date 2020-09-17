@@ -8,6 +8,8 @@
 <body>
     <header>
         <h1>PHP MVC</h1>
+        <a href="index.php/uzivatele/registrovat">Registrace</a>
+        <a href="index.php/uzivatele/prihlasit">Přihlášení</a>
     </header>
     <main>
         <?php require_once "router.php"; ?>

@@ -9,6 +9,6 @@ class Stranky
 
     public function chyba()
     {
-
+        require_once "views/stranky/chyba.php";
     }
 }

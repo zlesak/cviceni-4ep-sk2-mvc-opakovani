@@ -28,20 +28,25 @@ if(!array_key_exists($controller, $povolene_controllery_a_akce) ||
     $akce = "chyba";
 }
 
-// nacteni souboru s danym controllerem
-require_once "controllers/" . $controller . "_controller.php";
+spustit($controller, $akce);
 
-// nacteni pripadneho modelu pro dany controller
-switch($controller)
+function spustit($controller, $akce)
 {
-    case "stranky":
-        $aktivni_controller = new Stranky();
-        break;
-    case "uzivatele":
-        require_once "models/Uzivatel.php";
-        $aktivni_controller = new Uzivatele();
-        break;
-}
+    // nacteni souboru s danym controllerem
+    require_once "controllers/" . $controller . "_controller.php";
 
-// spusteni dane akce daneho controlleru
-$aktivni_controller->{$akce}();
+    // nacteni pripadneho modelu pro dany controller
+    switch($controller)
+    {
+        case "stranky":
+            $aktivni_controller = new Stranky();
+            break;
+        case "uzivatele":
+            require_once "models/Uzivatel.php";
+            $aktivni_controller = new Uzivatele();
+            break;
+    }
+
+    // spusteni dane akce daneho controlleru
+    $aktivni_controller->{$akce}();
+}

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -8,8 +12,22 @@
 <body>
     <header>
         <h1>PHP MVC</h1>
-        <a href="<?php echo $zakladni_url; ?>index.php/uzivatele/registrovat">Registrace</a>
-        <a href="<?php echo $zakladni_url; ?>index.php/uzivatele/prihlasit">Přihlášení</a>
+        <a href="<?php echo $zakladni_url; ?>index.php/stranky/domu/">Domů</a>
+        <?php
+            if(isset($_SESSION["prihlaseny_uzivatel"]))
+            {
+        ?>
+        <a href="<?php echo $zakladni_url; ?>index.php/stranky/profil/">Profil</a>
+        <?php
+            }
+            else
+            {
+        ?>
+        <a href="<?php echo $zakladni_url; ?>index.php/uzivatele/registrovat/">Registrace</a>
+        <a href="<?php echo $zakladni_url; ?>index.php/uzivatele/prihlasit/">Přihlášení</a>
+        <?php
+            }
+        ?>
     </header>
     <main>
         <?php require_once "router.php"; ?>

@@ -5,6 +5,7 @@ $povolene_controllery_a_akce = array(
     "stranky" => array(
         "domu",
         "chyba",
+        "profil",
     ),
     "uzivatele" => array(
         "registrovat",

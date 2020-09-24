@@ -1,4 +1,4 @@
-#Samostatná práce
+# Samostatná práce
 
 Rozšiřte skelet MVC aplikace o práci s příspěvky.
 

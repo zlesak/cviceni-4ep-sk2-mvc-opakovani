@@ -16,4 +16,9 @@ class Stranky
     {
         require_once "views/stranky/profil.php";
     }
+
+    public function prispevky()
+    {
+        require_once "views/stranky/prispevky.php";
+    }
 }

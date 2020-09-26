@@ -88,8 +88,11 @@ class Uzivatele
             {
                 session_destroy();
                 session_start();
-
+                $sql = "SELECT id FROM 4ep_sk2_mvc_uzivatele WHERE jmeno = '$jmeno'";
+                $spojeni = DB::pripojit();
+                $id = mysqli_query($spojeni, $sql);
                 $_SESSION["prihlaseny_uzivatel"] = $jmeno;
+                $_SESSION["id"] = $id;
 
                 global $zakladni_url;
 

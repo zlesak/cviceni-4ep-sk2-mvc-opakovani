@@ -18,6 +18,7 @@
             {
         ?>
         <a href="<?php echo $zakladni_url; ?>index.php/stranky/profil/">Profil</a>
+        <a href="<?php echo $zakladni_url; ?>index.php/stranky/prispevky/">Příspěvky</a>
         <?php
             }
             else

@@ -23,10 +23,10 @@
         public function upravit(){
             require_once "views/prispevky/upravit.php";
             if( $this->vyplnenaData("upravit")){
-                $nazev = trim($_POST["NazevUpravovanehoClanku"]);
-                $perex = trim($_POST["PerexUpravovanehoClanku"]);
-                $obsah = trim($_POST["ObsahUpravovanehoClanku"]);
-                $clanek = new Prispevek($nazev, $perex, $obsah);
+                $nazev = trim($_POST["nazevUpravovanehoClanku"]);
+                $perex = trim($_POST["perexUpravovanehoClanku"]);
+                $obsah = trim($_POST["obsahUpravovanehoClanku"]);
+                
 
             }
         }
@@ -36,8 +36,16 @@
         }
         public function vytvorit(){
             require_once "views/prispevky/vytvorit.php";
-            if($this->vyplnenaData("vytvorit")){
-
+            if($this->vyplnenaData("vytvorit")){                
+                $nazev = trim($_POST["nazevTvorenehoClanku"]);
+                $perex = trim($_POST["perexTvorenehoClanku"]);
+                $obsah = trim($_POST["obsahTvorenehoClanku"]);
+                $clanek = new Prispevek($nazev, $perex, $obsah);
+                $clanek_id = $clanek->VytvorSe();
+                header("location:". $zakladni_url ."index.php/prispevky/zobrazit/".$clanek_id);
             }
+        }
+        public function zobrazit(){
+            
         }
     }

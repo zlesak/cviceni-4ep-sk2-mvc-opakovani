@@ -17,6 +17,7 @@ $povolene_controllery_a_akce = array(
         "vytvorit",
         "upravit",
         "odstranit",
+        "zobrazit",
     ),
 );
 

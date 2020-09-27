@@ -34,7 +34,7 @@
         <?php require_once "router.php"; ?>
     </main>
     <footer>
-        &copy; Jakub Šenkýř, 2020
+        &copy; 2020, Jakub Šenkýř, Jan Zlesák
     </footer>
 </body>
 </html>

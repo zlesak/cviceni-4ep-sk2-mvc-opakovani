@@ -23,23 +23,27 @@
         return true;
 
         }
-        public function upravit(){
-            if(isset($parametry[0])){
+        public function upravit($param){
+            if(count($param) > 0){
                 require_once "views/prispevky/upravit.php";
-                if( $this->vyplnenaData("upravit")){
-                    $nazev = trim($_POST["nazevUpravovanehoClanku"]);
-                    $perex = trim($_POST["perexUpravovanehoClanku"]);
-                    $obsah = trim($_POST["obsahUpravovanehoClanku"]);
+                if(isset($_POST["nazevUpravovanehoClanku"]) && $this->vyplnenaData("upravit")){
                     $clanek = new Prispevek($nazev, $perex, $obsah);
-                    $clanek->UpravSe($parametry[0]);
+                    $clanek->UpravSe($param[0]);
                 }
             }else{
                 require_once "views/stranky/chyba.php";
 
             }
         }
-        public function odstranit(){
-            require_once "views/prispevky/odstranit.php";
+        public function odstranit($param){
+        if(count($param) > 0){
+            $prispevek_prazdny = new Prispevek("","","");
+            $prispevek_prazdny->OdstranSe($param);
+
+        }else{
+            require_once "views/stranky/chyba.php";
+
+        }
             
         }
         public function vytvorit(){
@@ -53,16 +57,15 @@
                 
             }
         }
-        public function zobrazit(){
-            if(isset($parametry[0])){
+        public function zobrazit($param){
+            if(count($param) > 0){
                 $prispevek_prazdny = new Prispevek("","","");
-                $prispevek_prazdny->ZobrazSe($parametry[0]);
+                $vratka = $prispevek_prazdny->ZobrazSe($param[0]);
                 require_once "views/prispevky/zobrazit.php";
+            }else{
+                require_once "views/stranky/chyba.php";
 
             }
 
-        }
-        public function zobrazit(){
-            
         }
     }

@@ -60,5 +60,6 @@ function spustit($controller, $akce)
     }
 
     // spusteni dane akce daneho controlleru
-    $aktivni_controller->{$akce}();
+    global $parametry;
+    $aktivni_controller->{$akce}($parametry);
 }

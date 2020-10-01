@@ -37,6 +37,6 @@ if($kde_zacina_index_php)
 else
 {
     $zakladni_url = $url;
+    $parametry = [];
 }
-
 require_once "views/layout.php";

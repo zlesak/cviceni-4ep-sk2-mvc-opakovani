@@ -1,4 +1,7 @@
 <?php
+
+    global $zakladni_url;
+
     class Prispevky{
         private function vyplnenaData($akce){
         if($akce == "upravit"){
@@ -21,12 +24,17 @@
 
         }
         public function upravit(){
-            require_once "views/prispevky/upravit.php";
-            if( $this->vyplnenaData("upravit")){
-                $nazev = trim($_POST["NazevUpravovanehoClanku"]);
-                $perex = trim($_POST["PerexUpravovanehoClanku"]);
-                $obsah = trim($_POST["ObsahUpravovanehoClanku"]);
-                $clanek = new Prispevek($nazev, $perex, $obsah);
+            if(isset($parametry[0])){
+                require_once "views/prispevky/upravit.php";
+                if( $this->vyplnenaData("upravit")){
+                    $nazev = trim($_POST["nazevUpravovanehoClanku"]);
+                    $perex = trim($_POST["perexUpravovanehoClanku"]);
+                    $obsah = trim($_POST["obsahUpravovanehoClanku"]);
+                    $clanek = new Prispevek($nazev, $perex, $obsah);
+                    $clanek->UpravSe($parametry[0]);
+                }
+            }else{
+                require_once "views/stranky/chyba.php";
 
             }
         }
@@ -37,7 +45,21 @@
         public function vytvorit(){
             require_once "views/prispevky/vytvorit.php";
             if($this->vyplnenaData("vytvorit")){
+                $nazev = trim($_POST["nazevTvorenehoClanku"]);
+                $perex = trim($_POST["perexTvorenehoClanku"]);
+                $obsah = trim($_POST["obsahTvorenehoClanku"]);
+                $clanek = new Prispevek($nazev, $perex, $obsah);
+                $clanek->VytvorSe();
+                
+            }
+        }
+        public function zobrazit(){
+            if(isset($parametry[0])){
+                $prispevek_prazdny = new Prispevek("","","");
+                $prispevek_prazdny->ZobrazSe($parametry[0]);
+                require_once "views/prispevky/zobrazit.php";
 
             }
+
         }
     }

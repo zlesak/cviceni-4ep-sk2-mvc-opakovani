@@ -1,7 +1,7 @@
 <?php
     $nazev = (isset($_POST["nazevTvorenehoClanku"])) ? $_POST["nazevTvorenehoClanku"] : "";
-    $obsah = (isset($_POST["obsahTvorenehoClanku"])) ? $_POST["obsahTvorenehoClanku"] : "";;
-    $perex = (isset($_POST["perexTvorenehoClanku"])) ? $_POST["perexTvorenehoClanku"] : "";;
+    $obsah = (isset($_POST["obsahTvorenehoClanku"])) ? $_POST["obsahTvorenehoClanku"] : "";
+    $perex = (isset($_POST["perexTvorenehoClanku"])) ? $_POST["perexTvorenehoClanku"] : "";
 ?>
 
 <form action='' method='post'>

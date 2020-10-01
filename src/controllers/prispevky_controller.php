@@ -1,4 +1,7 @@
 <?php
+
+    global $zakladni_url;
+
     class Prispevky{
         private function vyplnenaData($akce){
         if($akce == "upravit"){
@@ -21,12 +24,17 @@
 
         }
         public function upravit(){
-            require_once "views/prispevky/upravit.php";
-            if( $this->vyplnenaData("upravit")){
-                $nazev = trim($_POST["nazevUpravovanehoClanku"]);
-                $perex = trim($_POST["perexUpravovanehoClanku"]);
-                $obsah = trim($_POST["obsahUpravovanehoClanku"]);
-                
+            if(isset($parametry[0])){
+                require_once "views/prispevky/upravit.php";
+                if( $this->vyplnenaData("upravit")){
+                    $nazev = trim($_POST["nazevUpravovanehoClanku"]);
+                    $perex = trim($_POST["perexUpravovanehoClanku"]);
+                    $obsah = trim($_POST["obsahUpravovanehoClanku"]);
+                    $clanek = new Prispevek($nazev, $perex, $obsah);
+                    $clanek->UpravSe($parametry[0]);
+                }
+            }else{
+                require_once "views/stranky/chyba.php";
 
             }
         }
@@ -36,14 +44,23 @@
         }
         public function vytvorit(){
             require_once "views/prispevky/vytvorit.php";
-            if($this->vyplnenaData("vytvorit")){                
+            if($this->vyplnenaData("vytvorit")){
                 $nazev = trim($_POST["nazevTvorenehoClanku"]);
                 $perex = trim($_POST["perexTvorenehoClanku"]);
                 $obsah = trim($_POST["obsahTvorenehoClanku"]);
                 $clanek = new Prispevek($nazev, $perex, $obsah);
-                $clanek_id = $clanek->VytvorSe();
-                header("location:". $zakladni_url ."index.php/prispevky/zobrazit/".$clanek_id);
+                $clanek->VytvorSe();
+                
             }
+        }
+        public function zobrazit(){
+            if(isset($parametry[0])){
+                $prispevek_prazdny = new Prispevek("","","");
+                $prispevek_prazdny->ZobrazSe($parametry[0]);
+                require_once "views/prispevky/zobrazit.php";
+
+            }
+
         }
         public function zobrazit(){
             

@@ -32,9 +32,8 @@ class Prispevek{
     }
     public function UpravSe($id_clanku){
         $spojeni = DB::pripojit();
-        $sql = "UPDATE prispevky_databaze SET nazev=$this->nazev, perex=$this->perex, obsah=$this->obsah WHERE id_clanku=$id_clanku";
+        $sql = "UPDATE prispevky_databaze SET nazev='$this->nazev', perex='$this->perex', obsah='$this->obsah' WHERE id_clanku='$id_clanku'";
         mysqli_query($spojeni, $sql);
-        echo $this->nazev;
         global $zakladni_url;
         header("location:".$zakladni_url."index.php/prispevky/zobrazit/" . "$id_clanku");
 

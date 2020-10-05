@@ -26,13 +26,15 @@
         public function upravit($param){
             if(count($param) > 0){
                 require_once "views/prispevky/upravit.php";
-                if(isset($_POST["nazevUpravovanehoClanku"]) && $this->vyplnenaData("upravit")){
+                if($this->vyplnenaData("upravit")){
+                    $nazev = trim($_POST["nazevUpravovanehoClanku"]);
+                    $perex = trim($_POST["perexUpravovanehoClanku"]);
+                    $obsah = trim($_POST["obsahUpravovanehoClanku"]);
                     $clanek = new Prispevek($nazev, $perex, $obsah);
                     $clanek->UpravSe($param[0]);
                 }
             }else{
                 require_once "views/stranky/chyba.php";
-
             }
         }
         public function odstranit($param){

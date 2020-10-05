@@ -38,7 +38,7 @@
         public function odstranit($param){
         if(count($param) > 0){
             $prispevek_prazdny = new Prispevek("","","");
-            $prispevek_prazdny->OdstranSe($param);
+            $prispevek_prazdny->OdstranSe($param[0]);
 
         }else{
             require_once "views/stranky/chyba.php";

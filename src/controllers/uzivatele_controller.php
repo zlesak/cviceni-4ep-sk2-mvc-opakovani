@@ -52,11 +52,21 @@ class Uzivatele
                 // dochazi k registraci uzivatele
                 $uzivatel = new Uzivatel($jmeno, password_hash($heslo, PASSWORD_DEFAULT));
 
-                if($uzivatel->registruj_se())
+                $sql = "SELECT id FROM 4ep_sk2_mvc_uzivatele WHERE jmeno = '$jmeno'";
+                $spojeni = DB::pripojit();
+                $data = mysqli_query($spojeni, $sql);
+                
+
+                if($uzivatel->registruj_se() && mysqli_num_rows($data) < 1)
                 {
                     // uzivatel je uspesne registrovan
                     // presmeruju ho na prihlaseni
                     return spustit("uzivatele", "prihlasit");
+                }
+                elseif(mysqli_num_rows($data) >= 1){
+                    echo "Uživatel s tímto jménem již existuje";
+                    $data = false;
+                    //return spustit("uzivatele", "registrovat");
                 }
                 else
                 {

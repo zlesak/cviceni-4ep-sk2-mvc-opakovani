@@ -5,7 +5,10 @@
         $uzivatel_id = $_SESSION["prihlaseny_uzivatel"];
         echo"<a href=$zakladni_url". "index.php/prispevky/vytvorit/" .">Vytvořit příspěvek</a></ br><hr>";
     }
-    $sql = "SELECT * FROM prispevky_databaze";
+    else{
+        echo "<hr>";
+    }
+    $sql = "SELECT * FROM prispevky_databaze ORDER BY id_clanku desc";
     $spojeni = DB::pripojit();
     $data = mysqli_query($spojeni, $sql);
     if(mysqli_num_rows($data) > 0)

@@ -26,6 +26,7 @@
         ?>
         <a href="<?php echo $zakladni_url; ?>index.php/uzivatele/registrovat/">Registrace</a>
         <a href="<?php echo $zakladni_url; ?>index.php/uzivatele/prihlasit/">Přihlášení</a>
+        <a href="<?php echo $zakladni_url; ?>index.php/stranky/prispevky/">Příspěvky</a>
         <?php
             }
         ?>
